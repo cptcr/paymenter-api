@@ -1,6 +1,4 @@
-Certainly! Here's an updated version of the documentation with more usage examples for various scenarios, showcasing how to interact with the `Admin` and `Client` classes.
 
----
 
 # **Paymenter API Wrapper**
 
