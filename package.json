@@ -1,0 +1,38 @@
+{
+  "name": "paymenter-api",
+  "version": "1.2.1",
+  "description": "A npm package to communicate with the Paymenter API",
+  "main": "dist/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",                  
+    "start": "node dist/index.js",    
+    "prepublishOnly": "npm run build" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cptcr/paymenter-api.git"
+  },
+  "keywords": [
+    "Paymenter",
+    "Gateway",
+    "NPM",
+    "Package",
+    "TypeScript",
+    "JavaScript"
+  ],
+  "author": "cptcr",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cptcr/paymenter-api/issues"
+  },
+  "homepage": "https://github.com/cptcr/paymenter-api#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
