@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ES6",
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist", // Ensure type declarations are output to the correct directory
+    "module": "commonjs",
+    "target": "es2020",
     "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true
+    "strict": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts"]
 }
