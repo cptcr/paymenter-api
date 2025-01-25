@@ -1,6 +1,6 @@
 {
   "name": "paymenter-api",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A npm package to communicate with the Paymenter API",
   "main": "dist/index.ts",
   "types": "src/index.ts",
