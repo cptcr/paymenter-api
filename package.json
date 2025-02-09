@@ -1,6 +1,6 @@
 {
   "name": "paymenter-api",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "A npm package to communicate with the Paymenter API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cptcr/paymenter-api.git"
+    "url": "https://github.com/cptcr/paymenter-api.git"
   },
   "keywords": [
     "Paymenter",
