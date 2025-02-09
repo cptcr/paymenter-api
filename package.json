@@ -19,7 +19,8 @@
     "NPM",
     "Package",
     "TypeScript",
-    "JavaScript"
+    "JavaScript",
+    "API"
   ],
   "author": "cptcr",
   "license": "Apache-2.0",
