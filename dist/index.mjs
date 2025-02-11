@@ -121,64 +121,77 @@ var Client = class {
 Client.Ticket = class {
   /**
    * Creates a new ticket.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
-   * @param title - The title of the ticket.
-   * @param description - The description of the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.title - The title of the ticket.
+   * @param options.description - The description of the ticket.
+   * @param options.priority - Priority of the ticket ('low', 'medium', 'high').
    * @returns The data from the API after creating the ticket.
    */
-  static async create(panel, apikey, title, description, priority) {
-    return await makeNewTicketClient(panel, apikey, title, description, priority);
+  static async create(options) {
+    return await makeNewTicketClient(
+      options.panel,
+      options.apikey,
+      options.title,
+      options.description,
+      options.priority
+    );
   }
   /**
    * Retrieves ticket details by its ID.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket.
    * @returns The ticket details from the API.
    */
-  static async getById(panel, apikey, ticketId) {
-    return await getTicketByIdClient(panel, apikey, ticketId);
+  static async getById(options) {
+    return await getTicketByIdClient(options.panel, options.apikey, options.ticketId);
   }
   /**
    * Deletes a ticket by its ID.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket.
    * @returns The response data from the API after deleting the ticket.
    */
-  static async deleteById(panel, apikey, ticketId) {
-    return await deleteTicketByIdClient(panel, apikey, ticketId);
+  static async deleteById(options) {
+    return await deleteTicketByIdClient(options.panel, options.apikey, options.ticketId);
   }
   /**
    * Replies to a specific ticket.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket to reply to.
-   * @param message - The content of the reply message.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket to reply to.
+   * @param options.message - The content of the reply message.
    * @returns The response data from the API after sending the reply.
    */
-  static async reply(panel, apikey, ticketId, message) {
-    return await replyToTicketAsClient(panel, apikey, ticketId, message);
+  static async reply(options) {
+    return await replyToTicketAsClient(options.panel, options.apikey, options.ticketId, options.message);
   }
   /**
    * Retrieves all tickets from the system.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
    * @returns The list of all tickets from the API.
    */
-  static async getAll(panel, apikey) {
-    return await getAllTicketsClient(panel, apikey);
+  static async getAll(options) {
+    return await getAllTicketsClient(options.panel, options.apikey);
   }
   /**
    * Retrieves all messages from a specific ticket.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket.
    * @returns The list of all messages from the API for the specified ticket.
    */
-  static async getMessages(panel, apikey, ticketId) {
-    return await getAllMessagesFromTicketClient(panel, apikey, ticketId);
+  static async getMessages(options) {
+    return await getAllMessagesFromTicketClient(options.panel, options.apikey, options.ticketId);
   }
 };
 /**
@@ -187,22 +200,24 @@ Client.Ticket = class {
 Client.Invoice = class {
   /**
    * Retrieves invoice details by its ID.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
-   * @param invoiceId - The ID of the invoice.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.invoiceId - The ID of the invoice.
    * @returns The invoice details from the API.
    */
-  static async getById(panel, apikey, invoiceId) {
-    return await getInvoiceByIdClient(panel, apikey, invoiceId);
+  static async getById(options) {
+    return await getInvoiceByIdClient(options.panel, options.apikey, options.invoiceId);
   }
   /**
    * Retrieves all invoices from the system.
-   * @param panel - The panel URL for the API.
-   * @param apikey - The API key for authentication.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
    * @returns The list of all invoices from the API.
    */
-  static async getAll(panel, apikey) {
-    return await getAllInvoicesClient(panel, apikey);
+  static async getAll(options) {
+    return await getAllInvoicesClient(options.panel, options.apikey);
   }
 };
 var Client_default = Client;
@@ -347,67 +362,80 @@ var Admin = class {
 Admin.Ticket = class {
   /**
    * Creates a new ticket.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param title - The title of the ticket.
-   * @param message - The content of the ticket message.
-   * @param priority - Priority of the ticket ('low', 'medium', 'high').
-   * @param userid - ID of the user creating the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.title - The title of the ticket.
+   * @param options.message - The content of the ticket message.
+   * @param options.priority - Priority of the ticket ('low', 'medium', 'high').
+   * @param options.userId - ID of the user creating the ticket.
    * @returns The data from the API after creating the ticket.
    */
-  static async create(panel, apikey, title, message, priority, userid) {
-    return await createAdminTicket(panel, apikey, title, message, priority, userid);
+  static async create(options) {
+    return await createAdminTicket(
+      options.panel,
+      options.apikey,
+      options.title,
+      options.message,
+      options.priority,
+      options.userId
+    );
   }
   /**
    * Retrieves ticket details by its ID.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket.
    * @returns The ticket details from the API.
    */
-  static async getById(panel, apikey, ticketId) {
-    return await getTicketByIdAdmin(panel, apikey, ticketId);
+  static async getById(options) {
+    return await getTicketByIdAdmin(options.panel, options.apikey, options.ticketId);
   }
   /**
    * Replies to a specific ticket.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket to reply to.
-   * @param message - The content of the reply message.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket to reply to.
+   * @param options.message - The content of the reply message.
    * @returns The response data from the API after sending the reply.
    */
-  static async reply(panel, apikey, ticketId, message) {
-    return await replyToTicketAsAdmin(panel, apikey, ticketId, message);
+  static async reply(options) {
+    return await replyToTicketAsAdmin(options.panel, options.apikey, options.ticketId, options.message);
   }
   /**
    * Changes the status of a specific ticket.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket.
-   * @param status - The new status of the ticket ('open' or 'closed').
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket.
+   * @param options.status - The new status of the ticket ('open' or 'closed').
    * @returns The response data from the API after changing the status.
    */
-  static async changeStatus(panel, apikey, ticketId, status) {
-    return await changeTicketStatusAdmin(panel, apikey, ticketId, status);
+  static async changeStatus(options) {
+    return await changeTicketStatusAdmin(options.panel, options.apikey, options.ticketId, options.status);
   }
   /**
    * Retrieves all tickets from the system.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
    * @returns The list of all tickets from the API.
    */
-  static async getAll(panel, apikey) {
-    return await getAllTickets(panel, apikey);
+  static async getAll(options) {
+    return await getAllTickets(options.panel, options.apikey);
   }
   /**
    * Retrieves all messages from a specific ticket.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param ticketId - The ID of the ticket.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.ticketId - The ID of the ticket.
    * @returns The list of all messages from the API for the specified ticket.
    */
-  static async getAllMessages(panel, apikey, ticketId) {
-    return await getAllTicketMessages(panel, apikey, ticketId);
+  static async getAllMessages(options) {
+    return await getAllTicketMessages(options.panel, options.apikey, options.ticketId);
   }
 };
 /**
@@ -416,33 +444,36 @@ Admin.Ticket = class {
 Admin.Invoice = class {
   /**
    * Retrieves invoice details by its ID.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param invoiceId - The ID of the invoice.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.invoiceId - The ID of the invoice.
    * @returns The invoice details from the API.
    */
-  static async getById(panel, apikey, invoiceId) {
-    return await getInvoiceDatabyIdAdmin(panel, apikey, invoiceId);
+  static async getById(options) {
+    return await getInvoiceDatabyIdAdmin(options.panel, options.apikey, options.invoiceId);
   }
   /**
    * Marks an invoice as paid.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
-   * @param invoiceId - The ID of the invoice to pay.
-   * @param payment_method - The method of payment.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
+   * @param options.invoiceId - The ID of the invoice to pay.
+   * @param options.payment_method - The method of payment.
    * @returns The response data from the API after paying the invoice.
    */
-  static async pay(panel, apikey, invoiceId, payment_method) {
-    return await payInvoiceAdmin(panel, apikey, invoiceId, payment_method);
+  static async pay(options) {
+    return await payInvoiceAdmin(options.panel, options.apikey, options.invoiceId, options.payment_method);
   }
   /**
    * Retrieves all invoices from the system.
-   * @param panel - The panel URL.
-   * @param apikey - The API key for authentication.
+   * @param options - An object containing all parameters.
+   * @param options.panel - The panel URL.
+   * @param options.apikey - The API key for authentication.
    * @returns The list of all invoices from the API.
    */
-  static async getAll(panel, apikey) {
-    return await getAllInvoicesAdmin(panel, apikey);
+  static async getAll(options) {
+    return await getAllInvoicesAdmin(options.panel, options.apikey);
   }
 };
 var Admin_default = Admin;

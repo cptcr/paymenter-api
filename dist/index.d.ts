@@ -6,53 +6,86 @@ declare class Client {
         new (): {};
         /**
          * Creates a new ticket.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
-         * @param title - The title of the ticket.
-         * @param description - The description of the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.title - The title of the ticket.
+         * @param options.description - The description of the ticket.
+         * @param options.priority - Priority of the ticket ('low', 'medium', 'high').
          * @returns The data from the API after creating the ticket.
          */
-        create(panel: string, apikey: string, title: string, description: string, priority: "medium" | "low" | "high"): Promise<Response>;
+        create(options: {
+            panel: string;
+            apikey: string;
+            title: string;
+            description: string;
+            priority: "medium" | "low" | "high";
+        }): Promise<Response>;
         /**
          * Retrieves ticket details by its ID.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket.
          * @returns The ticket details from the API.
          */
-        getById(panel: string, apikey: string, ticketId: string): Promise<Response>;
+        getById(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+        }): Promise<Response>;
         /**
          * Deletes a ticket by its ID.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket.
          * @returns The response data from the API after deleting the ticket.
          */
-        deleteById(panel: string, apikey: string, ticketId: string): Promise<Response>;
+        deleteById(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+        }): Promise<Response>;
         /**
          * Replies to a specific ticket.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket to reply to.
-         * @param message - The content of the reply message.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket to reply to.
+         * @param options.message - The content of the reply message.
          * @returns The response data from the API after sending the reply.
          */
-        reply(panel: string, apikey: string, ticketId: string, message: string): Promise<Response>;
+        reply(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+            message: string;
+        }): Promise<Response>;
         /**
          * Retrieves all tickets from the system.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
          * @returns The list of all tickets from the API.
          */
-        getAll(panel: string, apikey: string): Promise<Response>;
+        getAll(options: {
+            panel: string;
+            apikey: string;
+        }): Promise<Response>;
         /**
          * Retrieves all messages from a specific ticket.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket.
          * @returns The list of all messages from the API for the specified ticket.
          */
-        getMessages(panel: string, apikey: string, ticketId: string): Promise<Response>;
+        getMessages(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+        }): Promise<Response>;
     };
     /**
      * Invoice-related operations for the client.
@@ -61,19 +94,28 @@ declare class Client {
         new (): {};
         /**
          * Retrieves invoice details by its ID.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
-         * @param invoiceId - The ID of the invoice.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.invoiceId - The ID of the invoice.
          * @returns The invoice details from the API.
          */
-        getById(panel: string, apikey: string, invoiceId: string): Promise<Response>;
+        getById(options: {
+            panel: string;
+            apikey: string;
+            invoiceId: string;
+        }): Promise<Response>;
         /**
          * Retrieves all invoices from the system.
-         * @param panel - The panel URL for the API.
-         * @param apikey - The API key for authentication.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
          * @returns The list of all invoices from the API.
          */
-        getAll(panel: string, apikey: string): Promise<Response>;
+        getAll(options: {
+            panel: string;
+            apikey: string;
+        }): Promise<Response>;
     };
 }
 
@@ -85,56 +127,90 @@ declare class Admin {
         new (): {};
         /**
          * Creates a new ticket.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param title - The title of the ticket.
-         * @param message - The content of the ticket message.
-         * @param priority - Priority of the ticket ('low', 'medium', 'high').
-         * @param userid - ID of the user creating the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.title - The title of the ticket.
+         * @param options.message - The content of the ticket message.
+         * @param options.priority - Priority of the ticket ('low', 'medium', 'high').
+         * @param options.userId - ID of the user creating the ticket.
          * @returns The data from the API after creating the ticket.
          */
-        create(panel: string, apikey: string, title: string, message: string, priority: "medium" | "low" | "high", userid: number): Promise<Response>;
+        create(options: {
+            panel: string;
+            apikey: string;
+            title: string;
+            message: string;
+            priority: "medium" | "low" | "high";
+            userId: number;
+        }): Promise<Response>;
         /**
          * Retrieves ticket details by its ID.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket.
          * @returns The ticket details from the API.
          */
-        getById(panel: string, apikey: string, ticketId: string): Promise<Response>;
+        getById(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+        }): Promise<Response>;
         /**
          * Replies to a specific ticket.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket to reply to.
-         * @param message - The content of the reply message.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket to reply to.
+         * @param options.message - The content of the reply message.
          * @returns The response data from the API after sending the reply.
          */
-        reply(panel: string, apikey: string, ticketId: string, message: string): Promise<Response>;
+        reply(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+            message: string;
+        }): Promise<Response>;
         /**
          * Changes the status of a specific ticket.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket.
-         * @param status - The new status of the ticket ('open' or 'closed').
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket.
+         * @param options.status - The new status of the ticket ('open' or 'closed').
          * @returns The response data from the API after changing the status.
          */
-        changeStatus(panel: string, apikey: string, ticketId: string, status: "open" | "closed"): Promise<Response>;
+        changeStatus(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+            status: "open" | "closed";
+        }): Promise<Response>;
         /**
          * Retrieves all tickets from the system.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
          * @returns The list of all tickets from the API.
          */
-        getAll(panel: string, apikey: string): Promise<Response>;
+        getAll(options: {
+            panel: string;
+            apikey: string;
+        }): Promise<Response>;
         /**
          * Retrieves all messages from a specific ticket.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param ticketId - The ID of the ticket.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.ticketId - The ID of the ticket.
          * @returns The list of all messages from the API for the specified ticket.
          */
-        getAllMessages(panel: string, apikey: string, ticketId: string): Promise<Response>;
+        getAllMessages(options: {
+            panel: string;
+            apikey: string;
+            ticketId: string;
+        }): Promise<Response>;
     };
     /**
      * Invoice-related operations
@@ -143,28 +219,43 @@ declare class Admin {
         new (): {};
         /**
          * Retrieves invoice details by its ID.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param invoiceId - The ID of the invoice.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.invoiceId - The ID of the invoice.
          * @returns The invoice details from the API.
          */
-        getById(panel: string, apikey: string, invoiceId: string): Promise<Response>;
+        getById(options: {
+            panel: string;
+            apikey: string;
+            invoiceId: string;
+        }): Promise<Response>;
         /**
          * Marks an invoice as paid.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
-         * @param invoiceId - The ID of the invoice to pay.
-         * @param payment_method - The method of payment.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
+         * @param options.invoiceId - The ID of the invoice to pay.
+         * @param options.payment_method - The method of payment.
          * @returns The response data from the API after paying the invoice.
          */
-        pay(panel: string, apikey: string, invoiceId: string, payment_method: string): Promise<Response>;
+        pay(options: {
+            panel: string;
+            apikey: string;
+            invoiceId: string;
+            payment_method: string;
+        }): Promise<Response>;
         /**
          * Retrieves all invoices from the system.
-         * @param panel - The panel URL.
-         * @param apikey - The API key for authentication.
+         * @param options - An object containing all parameters.
+         * @param options.panel - The panel URL.
+         * @param options.apikey - The API key for authentication.
          * @returns The list of all invoices from the API.
          */
-        getAll(panel: string, apikey: string): Promise<Response>;
+        getAll(options: {
+            panel: string;
+            apikey: string;
+        }): Promise<Response>;
     };
 }
 
