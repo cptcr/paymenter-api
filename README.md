@@ -1,4 +1,4 @@
-# **Paymenter API Wrapper**
+**# **Paymenter API Wrapper**
 
 A Node.js API wrapper for interacting with the [Paymenter API](https://paymenter.org). This package provides an easy-to-use interface for managing tickets, invoices, and other related features for both clients and admins.
 
@@ -137,4 +137,4 @@ console.log(messages);  // Logs all messages from the ticket
 
 ## **Disclaimer**
 
-This package is developed and maintained by **cptcr** and is **not affiliated** with the official [Paymenter API](https://paymenter.org).
+This package is developed and maintained by **cptcr** and is **not affiliated** with the official [Paymenter API](https://paymenter.org).**
