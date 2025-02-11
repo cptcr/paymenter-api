@@ -1,6 +1,6 @@
 {
   "name": "@cptcr/paymenter-api",
-  "version": "2.0.6",
+  "version": "2.0.9",
   "description": "A npm package to communicate with the Paymenter API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -43,4 +43,3 @@
     "registry": "https://npm.pkg.github.com"
   }
 }
-

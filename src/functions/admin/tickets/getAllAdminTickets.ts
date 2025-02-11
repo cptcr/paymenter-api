@@ -10,7 +10,7 @@ export default async function getAllTickets (panel: string, apikey: string) {
 
     return await fetch(`${panel}/api/admin/v1/tickets`, {
         headers: {
-            "Accpet": "application/json",
+            "Accept": "application/json",
             "Authorization": `Bearer ${apikey}`
         },
         method: "GET"

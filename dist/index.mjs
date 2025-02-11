@@ -1,5 +1,6 @@
 // src/functions/validate/validateDomain.ts
-function validateDomain(panel) {
+function validateDomain(panelDomain) {
+  const panel = `${panelDomain}`;
   if (!panel.startsWith("https") || !panel.startsWith("http")) {
     throw new TypeError("Panel domain must start with https or http!");
   }
@@ -294,7 +295,7 @@ async function getAllTickets(panel, apikey) {
   validateDomain(panel);
   return await fetch(`${panel}/api/admin/v1/tickets`, {
     headers: {
-      "Accpet": "application/json",
+      "Accept": "application/json",
       "Authorization": `Bearer ${apikey}`
     },
     method: "GET"
