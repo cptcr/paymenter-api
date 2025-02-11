@@ -1,6 +1,6 @@
 {
   "name": "paymenter-api",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A npm package to communicate with the Paymenter API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,5 +35,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
