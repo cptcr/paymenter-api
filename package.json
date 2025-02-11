@@ -1,13 +1,16 @@
 {
-  "name": "paymenter-api",
-  "version": "2.0.2",
+  "name": "@cptcr/paymenter-api",
+  "version": "2.0.6",
   "description": "A npm package to communicate with the Paymenter API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup",                  
     "start": "node dist/index.js",    
-    "prepublishOnly": "npm run build" 
+    "prepublishOnly": "npm run build",
+    "publish:github": "npm publish --userconfig .npmrc-github",
+    "publish:npm": "npm publish --registry https://registry.npmjs.org/ --userconfig .npmrc-npm",
+    "publish:all": "npm run publish:github && npm run publish:npm"
   },
   "repository": {
     "type": "git",
@@ -40,3 +43,4 @@
     "registry": "https://npm.pkg.github.com"
   }
 }
+
