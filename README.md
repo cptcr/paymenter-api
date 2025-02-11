@@ -11,7 +11,7 @@ A Node.js API wrapper for interacting with the [Paymenter API](https://paymenter
 You can install this wrapper via npm:
 
 ```bash
-npm install paymenter-api
+npm install cptcr/paymenter-api
 ```
 
 ## **Usage**
@@ -19,7 +19,7 @@ npm install paymenter-api
 ### TypeScript Example
 
 ```ts
-import { Admin, Client } from "paymenter-api";
+import { Admin, Client } from "@cptcr/paymenter-api";
 
 // Example: Create a new ticket as a client
 const newTicket = await Client.Ticket.create({
@@ -37,7 +37,7 @@ console.log(newTicket);  // Logs the response from the API after creating the ti
 
 ```js
 // Import the Paymenter API wrapper
-const { Admin, Client } = require("paymenter-api");
+const { Admin, Client } = require("@cptcr/paymenter-api");
 
 // Example: Create a new ticket as a client
 Client.Ticket.create({
